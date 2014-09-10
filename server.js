@@ -1,31 +1,14 @@
-// Get the packages we need
 var express = require('express');
-
-// Create our Express application
 var app = express();
-
-// Create our Express router
 var router = express.Router();
 
-router.get('/saved-searches', function(req, res) {
-  res.json({ message: 'Will return all searches based on the user key' });
-});
+var savedSearches = require('./saved-searches.js');
 
-router.get('/saved-searches/:id', function(req, res) {
-  res.json({ message: 'Will return a single search based on the id provided' });
-});
-
-router.post('/saved-searches', function(req, res) {
-  res.json({ message: 'Will create a search based on the json provided' });
-});
-
-router.put('/saved-searches/:id', function(req, res) {
-  res.json({ message: 'Will replace a search with matching id with the json provided !' });
-});
-
-router.delete('/saved-searches/:id', function(req, res) {
-  res.json({ message: 'Will remove the search with matching id !' });
-});
+router.get('/saved-searches', savedSearches.getall);
+router.get('/saved-searches/:id', savedSearches.get);
+router.post('/saved-searches', savedSearches.post);
+router.put('/saved-searches/:id', savedSearches.put);
+router.delete('/saved-searches/:id', savedSearches.delete);
 
 app.use('/', router);
 
