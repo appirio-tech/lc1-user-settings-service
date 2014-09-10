@@ -1,0 +1,7 @@
+{
+  "name": "tc-settings-micro",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.9.0"
+  }
+}
