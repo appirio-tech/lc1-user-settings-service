@@ -1,5 +1,6 @@
 {
-  "name": "tc-settings-micro",
+  "name": "tc-user-settings",
+  "repository": "https://github.com/topcoderinc/tc-user-settings.git",
   "main": "server.js",
   "dependencies": {
     "express": "^4.9.0"
