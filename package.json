@@ -3,6 +3,7 @@
   "repository": "https://github.com/topcoderinc/tc-user-settings.git",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.9.0",
     "express": "^4.9.0"
   }
 }
