@@ -12,7 +12,7 @@
 module.exports = {
 
     //The MongoDB URL.
-    MONGODB_URL : "mongodb://127.0.0.1:27017/tc-settings",
+    MONGODB_URL : process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/tc-settings",
 
     //The MongoDB connection pool size.
     MONGODB_CONNECTION_POOL_SIZE : 50,
