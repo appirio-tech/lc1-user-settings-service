@@ -1,31 +1,49 @@
+/*
+ * Copyright (C) 2014 TopCoder Inc., All Rights Reserved.
+ */
+/**
+ * Represents main application file.
+ *
+ * @version 1.0
+ * @author TCSASSEMBLER
+ */
 "use strict";
-var express = require('express');
-var bodyParser = require('body-parser');
+
+/*jslint unparam: true */
+
+var express = require('express'),
+    winston = require('winston'),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser'),
+    config = require("./config.js");
 
 var app = express();
-var router = express.Router();
 
-var savedSearches = require('./saved-searches.js');
-
-router.get('/saved-searches', savedSearches.getall);
-router.get('/saved-searches/:id', savedSearches.get);
-router.post('/saved-searches', savedSearches.post);
-router.put('/saved-searches/:id', savedSearches.put);
-router.delete('/saved-searches/:id', savedSearches.delete);
-
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // stub authentication middleware
 app.use(function (req, res, next) {
     req.user = {
-        id: 123456789
+        id: config.MOCK_USER_ID
     };
 
     next();
 });
 
-app.use('/', router);
+app.use('/saved-searches', require("./controllers/SavedSearches.js"));
+
+// error handler
+app.use(function (err, req, res, next) {
+    winston.error(err.stack || JSON.stringify(err));
+    res.statusCode = err.status || 500;
+    res.json({
+        status: res.statusCode,
+        developerMessage: err.message,
+        errorCode: err.errorCode || res.statusCode
+    });
+});
 
 // Start the server
-app.listen(4545, '127.0.0.1');
-console.log('running...');
+app.listen(config.API_PORT);
+winston.info('Express server listening on port ' + config.API_PORT);
