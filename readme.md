@@ -11,7 +11,7 @@ A micro service to store settings for users on topcoder.
 ## Deploy and Run
 
 * Install: ``npm install``
-* Start Server: ``node server.js``
+* Start Server: ``npm start``
 
 ## Configuration
 ``config.js`` file contains configuration
@@ -24,7 +24,7 @@ A micro service to store settings for users on topcoder.
 
 By default server listens on port ``4545``.
 
-## Postman
+## Postman - REALLY helpful for testing but not required
 Import ``postman.json`` file to Postman app (Click **Import Collection** icon).
 Add new environment ``tc`` (you can use any name) and add following variables:
 * ``URL`` the base url e.g. ``http://localhost:4545``
