@@ -1,6 +1,6 @@
-# Topcoder Member Settings Micro Service
+# Topcoder Member Settings Service
 
-A micro service to store settings for users on topcoder.
+A service to store settings for users on topcoder.
 
 ## Getting Started
 
