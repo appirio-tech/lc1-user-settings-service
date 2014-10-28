@@ -23,15 +23,33 @@ module.exports = {
     //The default limit for Get all calls
     DEFAULT_LIMIT: 50,
   
-    //Authorization Config
+    //Authorization config
     AUTHORIZATION: {
       
-      USED_METHOD: "API",
+      //The method used for authorization. Currently, it can be set as one of the following:
+      //  API     Using Topcoder API to authorize JWT Token and get user id
+      //  LOCAL   Decrypt JWT Token locally with express-jwt and get user id
+      //Any others will generate NotAuthorizedError
+      USED_METHOD: "LOCAL",
       
+      //API method config
       API: {
+        //URL of the Topcoder API endpoint used to authorize JWT Token
         URL: "http://api.topcoder.com/v2/user/identity"
-      }
+      },
       
+      //LOCAL method config
+      LOCAL: {
+        //If USE_DUMMY_KEY is true, DUMMY_KEY will be used to decrypt JWT Token provided in DUMMY_TOKEN.
+        //If USE_DUMMY_KEY is false, REAL_KEY will be used to decrypt JWT Token provided in the request header.
+        USE_DUMMY_KEY: true,
+        //REAL_KEY is currently filled with a random key for Postman testing purpose.
+        //As the name suggests, the real key to decrypt JWT Token used in production must be filled here.
+        REAL_KEY: "wadwapodlkmklmwadoijagapowadjkw",
+        //DUMMY_KEY and DUMMY_TOKEN doesn't really need to be changed.
+        //But if it has to, DUMMY_KEY can be filled whatever. DUMMY_TOKEN must follow JWT Token Convention.
+        DUMMY_KEY: "mofkmldfcxdkmfgjnfececfjmglsofg"
+      }
     }
   
 };
