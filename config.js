@@ -22,7 +22,16 @@ module.exports = {
 
     //The default limit for Get all calls
     DEFAULT_LIMIT: 50,
-
-    //The user id set in stub authentication middleware.
-    MOCK_USER_ID: 123456
+  
+    //Authorization Config
+    AUTHORIZATION: {
+      
+      USED_METHOD: "API",
+      
+      API: {
+        URL: "http://api.topcoder.com/v2/user/identity"
+      }
+      
+    }
+  
 };
