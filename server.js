@@ -15,12 +15,14 @@ var express = require('express'),
     winston = require('winston'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    helmet = require('helmet'),
     config = require("./config.js");
 
 var app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(helmet());
 
 // stub authentication middleware
 app.use(function (req, res, next) {
