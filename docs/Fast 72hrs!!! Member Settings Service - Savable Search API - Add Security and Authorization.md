@@ -1,6 +1,9 @@
 # Fast 72hrs!!! Member Settings Service - Savable Search API - Add Security and Authorization
 This challenge adds security using ``helmet`` module and authorization using custom middleware and ``express-jwt``. Info of the challenge can be found [here](http://www.topcoder.com/challenge-details/30046766/?type=develop).
 
+### Youtube Link
+[http://youtu.be/r9C-xhMYWwQ](http://youtu.be/r9C-xhMYWwQ)
+
 ### Deployment and Configuration
 See ``readme.md``.
 
