@@ -30,7 +30,7 @@ module.exports = {
       //  API     Using Topcoder API to authorize JWT Token and get user id
       //  LOCAL   Decrypt JWT Token locally with express-jwt and get user id
       //Any others will generate NotAuthorizedError
-      USED_METHOD: "LOCAL",
+      USED_METHOD: "API",
       
       //API method config
       API: {
@@ -40,14 +40,14 @@ module.exports = {
       
       //LOCAL method config
       LOCAL: {
-        //If USE_DUMMY_KEY is true, DUMMY_KEY will be used to decrypt JWT Token provided in DUMMY_TOKEN.
-        //If USE_DUMMY_KEY is false, REAL_KEY will be used to decrypt JWT Token provided in the request header.
+        //If USE_DUMMY_KEY is true, DUMMY_KEY will be used to decrypt JWT Token in the request authorization header.
+        //If USE_DUMMY_KEY is false, REAL_KEY will be used to decrypt JWT Token in the request authorization header.
         USE_DUMMY_KEY: true,
         //REAL_KEY is currently filled with a random key for Postman testing purpose.
         //As the name suggests, the real key to decrypt JWT Token used in production must be filled here.
         REAL_KEY: "wadwapodlkmklmwadoijagapowadjkw",
-        //DUMMY_KEY and DUMMY_TOKEN doesn't really need to be changed.
-        //But if it has to, DUMMY_KEY can be filled whatever. DUMMY_TOKEN must follow JWT Token Convention.
+        //DUMMY_KEY doesn't really need to be changed.
+        //If USE_DUMMY_KEY is true, this dummy key will be used instead of the real key.
         DUMMY_KEY: "mofkmldfcxdkmfgjnfececfjmglsofg"
       }
     }

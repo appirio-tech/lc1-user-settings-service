@@ -70,7 +70,6 @@ function _authorizeLocally(req, res, next) {
  *   and set the user id based on the response.
  * The "LOCAL" method is to decrypt the authorization header with express-jwt
  *   and set the user id based on the decrypted data.
- * TODO:  Add second method
  * @param {Object} req the request
  * @param {Object} res the response
  * @param {Function} next the callback function
