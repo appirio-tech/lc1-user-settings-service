@@ -15,21 +15,20 @@ var express = require('express'),
     winston = require('winston'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    config = require("./config.js");
+    helmet = require('helmet'),
+    config = require("./config.js"),
+    auth = require("./helpers/authorization.js");
 
 var app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-// stub authentication middleware
-app.use(function (req, res, next) {
-    req.user = {
-        id: config.MOCK_USER_ID
-    };
+// use helmet middleware to secure incoming requests
+app.use(helmet());
 
-    next();
-});
+// use authorize function of ./helpers/authorization middleware to authorize users
+app.use(auth.authorize);
 
 app.use('/saved-searches', require("./controllers/SavedSearches.js"));
 

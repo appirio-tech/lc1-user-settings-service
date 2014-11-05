@@ -3,13 +3,16 @@
   "repository": "https://github.com/topcoderinc/tc-user-settings.git",
   "main": "server.js",
   "dependencies": {
+    "async": "~0.9.0",
     "body-parser": "^1.9.0",
     "express": "^4.9.0",
+    "express-jwt": "^0.4.0",
+    "helmet": "^0.4.2",
+    "jslint": "~0.6.4",
     "mongoose": "~3.8.17",
-    "winston": "~0.8.1",
-    "underscore": "~1.7.0",
-    "async": "~0.9.0",
     "morgan": "~1.3.2",
-    "jslint": "~0.6.4"
+    "request": "^2.47.0",
+    "underscore": "~1.7.0",
+    "winston": "~0.8.1"
   }
 }
