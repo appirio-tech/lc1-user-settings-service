@@ -16,6 +16,7 @@ var express = require('express'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     helmet = require('helmet'),
+    cors = require('./helpers/cors'),
     config = require("./config.js"),
     auth = require("./helpers/authorization.js");
 
@@ -26,6 +27,8 @@ app.use(bodyParser.json());
 
 // use helmet middleware to secure incoming requests
 app.use(helmet());
+
+app.use(cors({ allow: config.ALLOWED_ORIGINS }));
 
 // use authorize function of ./helpers/authorization middleware to authorize users
 app.use(auth.authorize);

@@ -22,6 +22,8 @@ module.exports = {
 
     //The default limit for Get all calls
     DEFAULT_LIMIT: 50,
+
+    ALLOWED_ORIGINS: /^https?:\/\/(.+\.)?topcoder\.com$/,
   
     //Authorization config
     AUTHORIZATION: {
