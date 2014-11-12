@@ -11,6 +11,8 @@
 
 module.exports = {
 
+    //DEBUG: true,
+
     //The MongoDB URL.
     MONGODB_URL : process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/tc-settings",
 
