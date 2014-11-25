@@ -65,7 +65,15 @@ router.get("/", helper.offsetAndLimitMiddleware, function (req, res, next) {
         if (!setting) {
             res.json([]);
         } else {
-            res.json(setting.savedSearches.toObject({transform: true}).slice(req.offset, req.offset + req.limit));
+            if (req.query.name) {
+                var filtered = _.filter(setting.savedSearches, function(item) { 
+                    return item.name == req.query.name;
+                });
+
+                res.json(filtered);
+            } else {
+                res.json(setting.savedSearches.toObject({transform: true}).slice(req.offset, req.offset + req.limit));
+            }
         }
     });
 });
