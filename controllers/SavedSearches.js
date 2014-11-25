@@ -21,6 +21,7 @@ var express = require('express'),
     validator = require("../helpers/validator"),
     helper = require("../helpers/helper"),
     FILTER_MAX_LENGTH = 2000,
+    NAME_MAX_LENGTH = 180,
     router = express.Router();
 
 /**
@@ -78,7 +79,8 @@ router.get("/:id", fetchSavedSearchMiddleware, function (req, res) {
 router.post("/", function (req, res, next) {
     var error = validator.validateObject({
             type: {type: "enum", values: _.values(SavedSearchType)},
-            filter: {type: "string", length: FILTER_MAX_LENGTH}
+            name: {type: "string", length: NAME_MAX_LENGTH},
+            filter: {type: "string", length: FILTER_MAX_LENGTH},
         }, req.body),
         result;
     if (error) {
@@ -94,6 +96,7 @@ router.post("/", function (req, res, next) {
             var setting = results.setting;
             result = setting.savedSearches.create({
                 type: req.body.type,
+                name: req.body.name,
                 filter: req.body.filter
             });
             setting.savedSearches.push(result);
@@ -108,6 +111,7 @@ router.post("/", function (req, res, next) {
 router.put("/:id", fetchSavedSearchMiddleware, function (req, res, next) {
     var error = validator.validateObject({
             type: {type: "enum", values: _.values(SavedSearchType), optional: true},
+            name: {type: "string", length: NAME_MAX_LENGTH, optional: true},
             filter: {type: "string", length: FILTER_MAX_LENGTH, optional: true}
         }, req.body);
     if (error) {
@@ -115,6 +119,9 @@ router.put("/:id", fetchSavedSearchMiddleware, function (req, res, next) {
     }
     if (req.body.hasOwnProperty('type')) {
         req.savedSearch.type = req.body.type;
+    }
+    if (req.body.hasOwnProperty('name')) {
+        req.savedSearch.name = req.body.name;
     }
     if (req.body.hasOwnProperty('filter')) {
         req.savedSearch.filter = req.body.filter;

@@ -18,6 +18,7 @@ var SavedSearchType = {develop: 'develop', design: 'design', data: 'data'};
 //embedded schema
 var SavedSearchSchema = new Schema({
     type: {type: String, required: true, "enum": _.values(SavedSearchType) },
+    name: {type: String, required: false},
     filter: {type: String, required: false}
 });
 
