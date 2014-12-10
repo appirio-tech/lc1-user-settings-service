@@ -75,6 +75,9 @@ function _authorizeLocally(req, res, next) {
  * @param {Function} next the callback function
  */
 function authorize(req, res, next) {
+  if (req.method == "OPTIONS")
+    return next();
+
   var method = config.AUTHORIZATION.USED_METHOD;
   if (method === "API") {
     _authorizeByTopcoderApi(req, res, next);
