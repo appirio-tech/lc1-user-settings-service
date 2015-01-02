@@ -39,7 +39,7 @@ module.exports = {
       //API method config
       API: {
         //URL of the Topcoder API endpoint used to authorize JWT Token
-        URL: "http://api.topcoder.com/v2/user/identity"
+        URL: process.env.AUTH_API || "https://api.topcoder.com/v2/user/identity"
       },
       
       //LOCAL method config
