@@ -9,7 +9,7 @@
     "express-jwt": "^0.4.0",
     "helmet": "^0.4.2",
     "jslint": "~0.6.4",
-    "mongoose": "~3.8.17",
+    "mongoose": "~4.1.9",
     "morgan": "~1.3.2",
     "request": "^2.47.0",
     "underscore": "~1.7.0",
